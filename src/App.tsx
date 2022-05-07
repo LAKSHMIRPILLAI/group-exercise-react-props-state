@@ -2,6 +2,8 @@ import './App.css';
 import React, { useState } from 'react';
 import ChuckNorrisCard from './components/chuck_card';
 import ChuckInfo from './components/chuck_info';
+import ChuckJokes from './components/chuck_jokes';
+
 import Joke from './joke';
 
 function App() {
@@ -29,16 +31,20 @@ function App() {
   return (
     <div className="App">
 
-      <h1>React props and state</h1>
-      <ChuckNorrisCard />
+<h1>React props and state</h1>
+      <ChuckNorrisCard chuckGreeting={chuckGreeting}/>
 
       <h2>Chuck Info: </h2>
-      <ChuckInfo />
+      <ChuckInfo whalesSaved={whalesSaved} roundHouseKicks={roundHouseKicks}/>
 
       <h2>Jokes: </h2>
+      {jokes.map((joke) => (
+        <ChuckJokes id={joke.id} joke={joke.joke}/>
+      ))}
 
     </div>
   );
+  
 }
 
 export default App;
